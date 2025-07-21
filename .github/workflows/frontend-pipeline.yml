@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  DOCKER_IMAGE: arshiya2207/cake-frontend:V2
-  AWS_REGION: us-west-2
+  DOCKER_IMAGE: docker.io/arshiya2207/cake-frontend:V2
+  AWS_REGION: us-east-2
 
 jobs:
   build-and-deploy:
@@ -42,11 +42,12 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and Push Docker Image
-      run: |
-        docker build -t $DOCKER_IMAGE .
-        docker push $DOCKER_IMAGE
-
+    - name: Build docker image
+      run: docker build -t $DOCKER_IMAGE .
+        
+    - name: Push Docker image
+      run: docker push $DOCKER_IMAGE
+      
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
       with:
@@ -70,3 +71,4 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+

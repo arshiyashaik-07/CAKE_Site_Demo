@@ -57,7 +57,7 @@ resource "aws_instance" "devops_server" {
   ami                         = "ami-0d1b5a8c13042c939"  # Ubuntu 22.04 LTS (eu-west-1)
   instance_type               = "t3.medium"
   key_name                    = "Ohio.pem"              # Replace with your actual key
-  vpc_security_group_ids      = [aws_security_group.devops_sg.id]
+  vpc_security_group_ids      = [aws_security_group.devops_sg1.id]
 
   user_data = <<-EOF
 #!/bin/bash

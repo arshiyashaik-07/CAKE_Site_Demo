@@ -4,7 +4,7 @@ provider "aws" {
 
 # Security Group
 resource "aws_security_group" "devops_sg1" {
-  name        = "devops_sg"
+  name        = "devops_sg1"
   description = "Allow SSH, Jenkins, SonarQube, and App"
 
   # SSH
@@ -73,6 +73,6 @@ echo '/swapfile none swap sw 0 0' >> /etc/fstab
 EOF
 
   tags = {
-    Name = "DevOpsServer"
+    Name = "DevOpsServer1"
   }
 }
